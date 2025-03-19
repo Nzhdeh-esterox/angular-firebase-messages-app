@@ -1,0 +1,21 @@
+
+.messages-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  //min-height: 80vh; /* Center the button vertically */
+}
+
+.new-message-btn {
+  border-radius: 20px;
+  font-weight: 600;
+  text-transform: none;
+  padding: 8px 20px;
+  //background-color: $primary-color;
+  //color: white;
+  min-width: 100px;
+}
+
+.new-message-btn:hover {
+  //background-color: $primary-color;
+}

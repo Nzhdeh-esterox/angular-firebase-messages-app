@@ -1,0 +1,34 @@
+//@import './styles/_variables.scss';
+
+/* Apply a clean background and set a default font */
+body {
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  background: #f4f6f9; /* Light gray background */
+  color: #333;
+}
+//button.mat-raised-button {
+//  border-radius: $button-radius;
+//  font-weight: $button-font-weight;
+//  text-transform: none; // Prevents automatic uppercase
+//  padding: $button-padding;
+//  min-width: $button-min-width;
+//}
+//
+//button.mat-raised-button[color="primary"] {
+//  background-color: $primary-color;
+//  color: $primary-text;
+//}
+//
+//button.mat-raised-button[color="primary"]:hover {
+//  background-color: $primary-hover;
+//}
+//
+//button.mat-raised-button[color="secondary"] {
+//  background-color: $secondary-color;
+//  color: $secondary-text;
+//}
+//
+//button.mat-raised-button[color="secondary"]:hover {
+//  background-color: $secondary-hover;
+//}

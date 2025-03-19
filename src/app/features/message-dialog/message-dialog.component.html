@@ -1,0 +1,33 @@
+<div class="dialog-header">
+  <h2>New Message</h2>
+  <button mat-raised-button class="submit-btn" color="primary" (click)="closeDialog()">
+    Close
+  </button>
+</div>
+
+<div class="dialog-content">
+  <form [formGroup]="messageForm" (ngSubmit)="onSubmit()">
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Email</mat-label>
+      <input matInput type="email" formControlName="email" required>
+      <mat-error *ngIf="messageForm.get('email')?.invalid">Valid email is required</mat-error>
+    </mat-form-field>
+
+    <mat-form-field appearance="outline" class="full-width">
+      <mat-label>Message</mat-label>
+      <textarea matInput rows="4" formControlName="message" required></textarea>
+      <mat-error *ngIf="messageForm.get('message')?.invalid">Message is required</mat-error>
+    </mat-form-field>
+
+    <!-- Spinner shown while loading -->
+    <div class="loading-container" *ngIf="loading$ | async">
+      <mat-spinner></mat-spinner>
+    </div>
+
+    <div class="dialog-actions">
+      <button mat-raised-button class="submit-btn" color="primary" type="submit" [disabled]="messageForm.invalid">
+        Submit
+      </button>
+    </div>
+  </form>
+</div>

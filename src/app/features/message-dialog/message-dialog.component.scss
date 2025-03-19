@@ -1,0 +1,100 @@
+//@import '../../../styles/variables'; // Import global styles if needed
+
+.dialog-content {
+  position: relative; /* ✅ Needed so spinner positions correctly */
+  padding: 20px;
+}
+mat-form-field {
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+/* Style for error messages */
+mat-error {
+  color: red !important; /* Red error message */
+  font-size: 14px;
+  font-weight: 500;
+  margin-top: 4px;
+}
+
+/* Red border & rounded corners for invalid email and message fields */
+mat-form-field.ng-invalid.ng-touched .mat-mdc-text-field-wrapper {
+  border: 2px solid red !important;
+  border-radius: 8px !important; /* Rounded corners */
+}
+
+/* Styling the dialog header */
+.dialog-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px;
+  border-bottom: 1px solid #ddd;
+  background: #f4f6f9;
+}
+
+/* Close button styling */
+.dialog-header button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  font-size: 16px;
+}
+
+/* Full width styling for fields */
+.full-width {
+  width: 100%;
+}
+
+/* Submit button styling */
+.dialog-actions {
+  display: flex;
+  justify-content: flex-end;
+  padding: 16px;
+}
+
+.submit-btn {
+  border-radius: 20px;
+  font-weight: 600;
+  text-transform: none;
+  padding: 8px 20px;
+  min-width: 100px;
+}
+
+// snackbar styles
+.snackbar-success {
+  background-color: #4caf50;
+  color: white;
+}
+
+.snackbar-error {
+  background-color: #f44336;
+  color: white;
+}
+
+/* Ensure spinner container is positioned correctly */
+.loading-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  height: 100%;
+  padding: 10px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background: rgba(255, 255, 255, 0.8); /* Light overlay effect */
+  z-index: 9999; /* Ensure it's above everything */
+  border-radius: 8px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Fix spinner visibility */
+mat-spinner {
+  width: 50px !important;
+  height: 50px !important;
+  display: block;
+  color: #007bff; /* Adjust color if needed */
+}
