@@ -1,9 +1,16 @@
-
-.messages-container {
+.messages-wrapper {
   display: flex;
-  justify-content: center;
+  flex-direction: column;
   align-items: center;
-  //min-height: 80vh; /* Center the button vertically */
+  width: 100%;
+  padding: 20px;
+}
+
+.messages-header {
+  display: flex;
+  justify-content: flex-end;
+  width: 80%; /* Matches table width */
+  margin-bottom: 10px;
 }
 
 .new-message-btn {
@@ -11,11 +18,15 @@
   font-weight: 600;
   text-transform: none;
   padding: 8px 20px;
-  //background-color: $primary-color;
-  //color: white;
-  min-width: 100px;
+  min-width: 120px;
 }
 
-.new-message-btn:hover {
-  //background-color: $primary-color;
+.table-container {
+  width: 80%;
+  margin: 0 auto;
+}
+
+table {
+  width: 100%;
+  margin-top: 10px;
 }

@@ -1,13 +1,13 @@
-import { Component, ViewEncapsulation, inject, OnDestroy, OnInit } from '@angular/core';
+import { Component, ViewEncapsulation, inject, OnDestroy, OnInit, AfterViewInit, ViewChild } from '@angular/core';
 import { CommonModule } from '@angular/common';
 import { Store, select } from '@ngrx/store';
 import { Observable, Subscription } from 'rxjs';
 
 import { MatDialog, MatDialogModule } from '@angular/material/dialog';
 import { MessageDialogComponent } from '../message-dialog/message-dialog.component';
-import { MatButton } from '@angular/material/button';
-
-import { MatTableModule } from '@angular/material/table';
+import { MatButtonModule } from '@angular/material/button';
+import { MatPaginator, MatPaginatorModule } from '@angular/material/paginator';
+import { MatTableModule, MatTableDataSource } from '@angular/material/table';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
 
 import * as MessagesActions from './state/messages.actions';
@@ -17,19 +17,22 @@ import { Message } from './state/messages.model';
 @Component({
   selector: 'app-messages',
   standalone: true,
-  imports: [CommonModule, MatButton, MatTableModule, MatProgressSpinnerModule],
+  imports: [
+    CommonModule, MatButtonModule, MatTableModule, MatProgressSpinnerModule, MatPaginatorModule
+  ],
   templateUrl: './messages.component.html',
   styleUrl: './messages.component.scss',
   encapsulation: ViewEncapsulation.None
 })
-
-export class MessagesComponent implements OnInit, OnDestroy {
+export class MessagesComponent implements OnInit, OnDestroy, AfterViewInit {
   private readonly store = inject(Store);
-  messages: Message[] = [];
+  messages!: MatTableDataSource<Message>;
   messagesSubscription: Subscription | undefined;
 
   displayedColumns: string[] = ['id', 'email', 'message', 'date'];
   loading$: Observable<boolean>;
+
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
 
   constructor(private dialog: MatDialog) {
     this.loading$ = this.store.pipe(select(selectMessagesLoading));
@@ -42,14 +45,24 @@ export class MessagesComponent implements OnInit, OnDestroy {
     // Dispatch action to load messages
     this.store.dispatch(MessagesActions.loadMessages());
 
-    // Manually subscribe to messages$
+    // Subscribe to messages and update dataSource
     this.messagesSubscription = this.store.pipe(select(selectAllMessages)).subscribe((data) => {
-      this.messages = data ?? []; // Ensure messages is never null
+      this.messages = new MatTableDataSource<Message>(data);
+
+      if (this.paginator) {
+        this.messages.paginator = this.paginator; // Ensure paginator is set when data arrives
+      }
     });
   }
 
-  formatDate(timestamp: number): string {
-    return new Date(timestamp).toLocaleString(); // Format date
+  ngAfterViewInit() {
+    if (this.paginator && this.messages) {
+      this.messages.paginator = this.paginator;
+    }
+  }
+
+  truncateMessage(message: string, length: number = 100): string {
+    return message.length > length ? message.slice(0, length) + '...' : message;
   }
 
   openDialog(): void {
@@ -59,8 +72,6 @@ export class MessagesComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    if (this.messagesSubscription) {
-      this.messagesSubscription.unsubscribe();
-    }
+    this.messagesSubscription?.unsubscribe();
   }
 }

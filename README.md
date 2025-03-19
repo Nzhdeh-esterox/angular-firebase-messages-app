@@ -96,15 +96,13 @@ firebase login
 firebase init
 firebase deploy
 ```
-- The app will be live at **`https://.web.app/`**
+- The app will be live at [Angular Messages APP](https://angular-messages-app.web.app/)
 
 ---
 
 
 ## 🎯 Future Improvements
-✅ Add **Authentication (Login & Signup)** using Firebase Auth.  
-✅ Implement **Pagination & Filtering** in the Material Table.  
-✅ Support **File Uploads** (e.g., Attachments in Messages).  
+✅ Add **Authentication (Login & Signup)** using Firebase Auth.
 
 ---
 

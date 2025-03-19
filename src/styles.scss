@@ -1,34 +1,22 @@
-//@import './styles/_variables.scss';
+@use '@angular/material' as mat;
 
-/* Apply a clean background and set a default font */
 body {
+  font-family: Roboto, "Helvetica Neue", sans-serif;
   margin: 0;
-  font-family: 'Roboto', sans-serif;
-  background: #f4f6f9; /* Light gray background */
-  color: #333;
+  padding: 30px;
+  height: 100%;
+
+  @include mat.theme((
+    color: (
+      theme-type: light,
+      primary: mat.$azure-palette,
+      tertiary: mat.$blue-palette,
+    ),
+    typography: Roboto,
+    density: 0,
+  ));
 }
-//button.mat-raised-button {
-//  border-radius: $button-radius;
-//  font-weight: $button-font-weight;
-//  text-transform: none; // Prevents automatic uppercase
-//  padding: $button-padding;
-//  min-width: $button-min-width;
-//}
-//
-//button.mat-raised-button[color="primary"] {
-//  background-color: $primary-color;
-//  color: $primary-text;
-//}
-//
-//button.mat-raised-button[color="primary"]:hover {
-//  background-color: $primary-hover;
-//}
-//
-//button.mat-raised-button[color="secondary"] {
-//  background-color: $secondary-color;
-//  color: $secondary-text;
-//}
-//
-//button.mat-raised-button[color="secondary"]:hover {
-//  background-color: $secondary-hover;
-//}
+
+html {
+  height: 100%;
+}

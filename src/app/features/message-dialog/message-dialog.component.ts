@@ -48,11 +48,6 @@ export class MessageDialogComponent {
     });
 
     this.loading$ = this.store.pipe(select(selectMessagesLoading));
-
-    // Log the loading state to verify if it changes
-    this.loading$.subscribe(loading => {
-      console.log(" Loading state changed:", loading);
-    });
   }
 
   onSubmit(): void {

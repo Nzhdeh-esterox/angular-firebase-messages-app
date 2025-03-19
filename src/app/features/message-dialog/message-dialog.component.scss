@@ -1,7 +1,6 @@
-//@import '../../../styles/variables'; // Import global styles if needed
 
 .dialog-content {
-  position: relative; /* ✅ Needed so spinner positions correctly */
+  position: relative; /* Needed so spinner positions correctly */
   padding: 20px;
 }
 mat-form-field {
@@ -35,7 +34,6 @@ mat-form-field.ng-invalid.ng-touched .mat-mdc-text-field-wrapper {
 
 /* Close button styling */
 .dialog-header button {
-  background: none;
   border: none;
   cursor: pointer;
   font-weight: bold;
@@ -85,16 +83,15 @@ mat-form-field.ng-invalid.ng-touched .mat-mdc-text-field-wrapper {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  background: rgba(255, 255, 255, 0.8); /* Light overlay effect */
-  z-index: 9999; /* Ensure it's above everything */
+  background: rgba(255, 255, 255, 0.8);
+  z-index: 9999;
   border-radius: 8px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
 }
 
-/* Fix spinner visibility */
 mat-spinner {
   width: 50px !important;
   height: 50px !important;
   display: block;
-  color: #007bff; /* Adjust color if needed */
+  color: #007bff;
 }
